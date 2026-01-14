@@ -15,6 +15,7 @@ public class IpCalculatorActivity extends AppCompatActivity {
     private Button calculateButton;
     private TextView networkAddressText;
     private TextView broadcastAddressText;
+    private TextView hostRangeText;
     private TextView subnetMaskText;
     private TextView wildcardMaskText;
 
@@ -28,6 +29,7 @@ public class IpCalculatorActivity extends AppCompatActivity {
         calculateButton = findViewById(R.id.calculateButton);
         networkAddressText = findViewById(R.id.networkAddressText);
         broadcastAddressText = findViewById(R.id.broadcastAddressText);
+        hostRangeText = findViewById(R.id.hostRangeText);
         subnetMaskText = findViewById(R.id.subnetMaskText);
         wildcardMaskText = findViewById(R.id.wildcardMaskText);
 
@@ -52,16 +54,28 @@ public class IpCalculatorActivity extends AppCompatActivity {
                 return;
             }
 
-            long mask = (-1L) << (32 - cidr);
+            long mask = (cidr == 0) ? 0L : (-1L << (32 - cidr));
             long network = ip & mask;
-            long broadcast = network | ~mask;
             long wildcard = ~mask;
+            long broadcast = network | wildcard;
+
+            long firstHost = network + 1;
+            long lastHost = broadcast - 1;
 
             networkAddressText.setText("Adresse réseau: " + longToIp(network));
             broadcastAddressText.setText("Adresse broadcast: " + longToIp(broadcast));
+
+            if (cidr < 31) {
+                hostRangeText.setText("Plage d'adresses: " + longToIp(firstHost) + " - " + longToIp(lastHost));
+            } else {
+                hostRangeText.setText("Plage d'adresses: N/A");
+            }
+
             subnetMaskText.setText("Masque de sous-réseau: " + longToIp(mask));
             wildcardMaskText.setText("Masque inverse: " + longToIp(wildcard));
 
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Entrée numérique invalide", Toast.LENGTH_SHORT).show();
         } catch (IllegalArgumentException e) {
             Toast.makeText(this, "Adresse IP invalide", Toast.LENGTH_SHORT).show();
         }
@@ -70,13 +84,13 @@ public class IpCalculatorActivity extends AppCompatActivity {
     private long ipToLong(String ipAddress) {
         String[] parts = ipAddress.split("\\.");
         if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid IP address");
+            throw new IllegalArgumentException("Format d'adresse IP invalide");
         }
         long result = 0;
         for (int i = 0; i < 4; i++) {
             int part = Integer.parseInt(parts[i]);
             if (part < 0 || part > 255) {
-                throw new IllegalArgumentException("Invalid IP address");
+                throw new IllegalArgumentException("Segment d'adresse IP invalide");
             }
             result |= (long)part << (24 - (8 * i));
         }

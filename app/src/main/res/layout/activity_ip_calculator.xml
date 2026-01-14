@@ -15,9 +15,20 @@
         android:layout_marginEnd="8dp"
         android:hint="Adresse IP"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/cidrInput"
+        app:layout_constraintEnd_toStartOf="@+id/slashText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="/"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/ipAddressInput"
+        app:layout_constraintEnd_toStartOf="@+id/cidrInput"
+        app:layout_constraintTop_toTopOf="@id/ipAddressInput" />
 
     <EditText
         android:id="@+id/cidrInput"
@@ -61,6 +72,16 @@
         app:layout_constraintTop_toBottomOf="@id/networkAddressText" />
 
     <TextView
+        android:id="@+id/hostRangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Plage d'adresses:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/broadcastAddressText" />
+
+    <TextView
         android:id="@+id/subnetMaskText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +89,7 @@
         android:text="Masque de sous-réseau:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/broadcastAddressText" />
+        app:layout_constraintTop_toBottomOf="@id/hostRangeText" />
 
     <TextView
         android:id="@+id/wildcardMaskText"
