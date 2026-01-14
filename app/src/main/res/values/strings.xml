@@ -5,6 +5,7 @@
     <string name="ssh_telnet">SSH - Telnet</string>
     <string name="settings">Paramètres</string>
     
+    <!-- SSH / Telnet -->
     <string name="host_hint">Adresse IP ou Host (ex: telehack.com)</string>
     <string name="port_hint">Port</string>
     <string name="user_hint">Username (SSH uniquement)</string>
@@ -16,8 +17,33 @@
     <string name="connected_to">Connecté à %s\n</string>
     <string name="conn_failed">Échec de connexion : %s</string>
     
+    <!-- Settings -->
     <string name="dark_mode">Mode Sombre</string>
     <string name="language">Langue</string>
     <string name="lang_fr">Français</string>
     <string name="lang_en">Anglais</string>
+
+    <!-- IP Calculator -->
+    <string name="ip_hint">Adresse IP</string>
+    <string name="cidr_hint">CIDR</string>
+    <string name="calculate">Calculer</string>
+    <string name="network_address">Adresse réseau :</string>
+    <string name="broadcast_address">Adresse broadcast :</string>
+    <string name="host_range">Plage d\'adresses :</string>
+    <string name="subnet_mask">Masque de sous-réseau :</string>
+    <string name="wildcard_mask">Masque inverse :</string>
+
+    <!-- Speed Test -->
+    <string name="speed_test_title">Test de Débit</string>
+    <string name="current_speed">Vitesse actuelle :</string>
+    <string name="ping_label">Ping :</string>
+    <string name="min_label">Min</string>
+    <string name="max_label">Max</string>
+    <string name="start_test">Démarrer le test</string>
+    <string name="surfing">Navigation</string>
+    <string name="streaming">Streaming</string>
+    <string name="gaming">Jeux</string>
+    <string name="loading">Chargement...</string>
+    <string name="error_network">Erreur réseau</string>
+    <string name="error">Erreur</string>
 </resources>

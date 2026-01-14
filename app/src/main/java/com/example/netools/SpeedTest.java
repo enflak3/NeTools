@@ -46,7 +46,7 @@ public class SpeedTest extends AppCompatActivity {
 
         btnStart.setOnClickListener(v -> {
             btnStart.setEnabled(false);
-            tvSpeed.setText("En cours...");
+            tvSpeed.setText(getString(R.string.loading));
             new Thread(this::runTest).start();
         });
     }
@@ -76,7 +76,7 @@ public class SpeedTest extends AppCompatActivity {
         Request request = new Request.Builder().url(URL).build();
         try (Response response = client.newCall(request).execute()) {
             ResponseBody body = response.body();
-            if (!response.isSuccessful() || body == null) throw new IOException("Erreur réseau");
+            if (!response.isSuccessful() || body == null) throw new IOException(getString(R.string.error_network));
 
             InputStream is = body.byteStream();
             byte[] buf = new byte[8192];
@@ -118,7 +118,7 @@ public class SpeedTest extends AppCompatActivity {
                 }
             }
         } catch (IOException e) {
-            runOnUiThread(() -> tvSpeed.setText("Erreur"));
+            runOnUiThread(() -> tvSpeed.setText(getString(R.string.error)));
         } finally {
             runOnUiThread(() -> btnStart.setEnabled(true));
         }

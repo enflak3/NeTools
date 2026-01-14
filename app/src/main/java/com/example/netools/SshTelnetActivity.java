@@ -1,8 +1,6 @@
 package com.example.netools;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,7 +17,6 @@ import org.apache.commons.net.telnet.TelnetClient;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.Properties;
 
 public class SshTelnetActivity extends AppCompatActivity {
@@ -108,14 +105,14 @@ public class SshTelnetActivity extends AppCompatActivity {
 
                 isConnected = true;
                 runOnUiThread(() -> {
-                    btnConnect.setText("Disconnect");
-                    appendToTerminal("Connected to " + host + "\n");
+                    btnConnect.setText(R.string.disconnect);
+                    appendToTerminal(getString(R.string.connected_to, host));
                 });
 
                 startReading();
 
             } catch (Exception e) {
-                runOnUiThread(() -> Toast.makeText(this, "Connection failed: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                runOnUiThread(() -> Toast.makeText(this, getString(R.string.conn_failed, e.getMessage()), Toast.LENGTH_LONG).show());
             }
         }).start();
     }
@@ -131,7 +128,7 @@ public class SshTelnetActivity extends AppCompatActivity {
                 }
             } catch (Exception e) {
                 if (isConnected) {
-                    runOnUiThread(() -> appendToTerminal("\nDisconnected: " + e.getMessage() + "\n"));
+                    runOnUiThread(() -> appendToTerminal("\n" + getString(R.string.disconnect) + ": " + e.getMessage() + "\n"));
                     disconnect();
                 }
             }
@@ -144,7 +141,7 @@ public class SshTelnetActivity extends AppCompatActivity {
                 outputStream.write(command.getBytes());
                 outputStream.flush();
             } catch (Exception e) {
-                runOnUiThread(() -> appendToTerminal("\nError sending: " + e.getMessage() + "\n"));
+                runOnUiThread(() -> appendToTerminal("\n" + getString(R.string.error) + " : " + e.getMessage() + "\n"));
             }
         }).start();
     }
@@ -160,15 +157,14 @@ public class SshTelnetActivity extends AppCompatActivity {
                 if (outputStream != null) outputStream.close();
             } catch (Exception ignored) {}
             runOnUiThread(() -> {
-                btnConnect.setText("Connect");
-                appendToTerminal("\nDisconnected.\n");
+                btnConnect.setText(R.string.connect);
+                appendToTerminal("\n" + getString(R.string.disconnect) + ".\n");
             });
         }).start();
     }
 
     private void appendToTerminal(String text) {
         tvTerminal.append(text);
-        // Auto scroll could be added here
     }
 
     @Override

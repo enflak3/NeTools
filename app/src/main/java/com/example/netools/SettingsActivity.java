@@ -1,7 +1,7 @@
 package com.example.netools;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,34 +13,31 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.materialswitch.MaterialSwitch;
 
-import java.util.Locale;
-
 public class SettingsActivity extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "prefs";
-    private static final String KEY_DARK_MODE = "dark_mode";
-    private static final String KEY_LANG = "lang_code";
-    
     private boolean isInitialDisplay = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Appliquer la langue avant tout
+        LanguageManager.loadLocale(this);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         MaterialSwitch switchDarkMode = findViewById(R.id.switchDarkMode);
         Spinner spinnerLanguage = findViewById(R.id.spinnerLanguage);
 
-        // Dark Mode Setup
-        switchDarkMode.setChecked(prefs.getBoolean(KEY_DARK_MODE, false));
+        // Dark Mode
+        switchDarkMode.setChecked(prefs.getBoolean("dark_mode", false));
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean(KEY_DARK_MODE, isChecked).apply();
+            prefs.edit().putBoolean("dark_mode", isChecked).apply();
             AppCompatDelegate.setDefaultNightMode(isChecked ? 
                 AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
         });
 
-        // Language Spinner Setup
+        // Language Spinner
         String[] languages = {getString(R.string.lang_fr), getString(R.string.lang_en)};
         String[] codes = {"fr", "en"};
         
@@ -49,8 +46,8 @@ public class SettingsActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
-        // Set current selection
-        String currentLang = prefs.getString(KEY_LANG, "fr");
+        // Sélectionner la langue actuelle
+        String currentLang = LanguageManager.getLangCode(this);
         for (int i = 0; i < codes.length; i++) {
             if (codes[i].equals(currentLang)) {
                 spinnerLanguage.setSelection(i);
@@ -66,23 +63,19 @@ public class SettingsActivity extends AppCompatActivity {
                     return;
                 }
                 String selectedCode = codes[position];
-                if (!selectedCode.equals(prefs.getString(KEY_LANG, "fr"))) {
-                    prefs.edit().putString(KEY_LANG, selectedCode).apply();
-                    setLocale(selectedCode);
-                    recreate();
+                if (!selectedCode.equals(LanguageManager.getLangCode(SettingsActivity.this))) {
+                    LanguageManager.setLocale(SettingsActivity.this, selectedCode);
+                    
+                    // Redémarrer l'application pour appliquer partout proprement
+                    Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
-    }
-
-    private void setLocale(String langCode) {
-        Locale locale = new Locale(langCode);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }
