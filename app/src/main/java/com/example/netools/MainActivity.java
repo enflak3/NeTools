@@ -28,11 +28,5 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SpeedTest.class);
             startActivity(intent);
         });
-
-        Button btnIpCalculator = findViewById(R.id.button3);
-        btnIpCalculator.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, IpCalculatorActivity.class);
-            startActivity(intent);
-        });
     }
 }
