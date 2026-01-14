@@ -28,5 +28,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SpeedTest.class);
             startActivity(intent);
         });
+
+        Button btnSshTelnet = findViewById(R.id.button4);
+        btnSshTelnet.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SshTelnetActivity.class);
+            startActivity(intent);
+        });
     }
 }

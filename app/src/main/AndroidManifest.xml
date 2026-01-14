@@ -17,6 +17,10 @@
             android:name=".SpeedTest"
             android:exported="false" />
         <activity
+            android:name=".SshTelnetActivity"
+            android:exported="false"
+            android:label="SSH - Telnet" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
