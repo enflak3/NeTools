@@ -2,7 +2,7 @@ package com.example.netools;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,19 +23,29 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Bouton SpeedTest (button)
+        // Bouton SpeedTest
         findViewById(R.id.button).setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SpeedTest.class));
         });
 
-        // Bouton Calculateur IP (button3)
+        // Bouton Calculateur IP (Vérifiez si IpCalculatorActivity existe, sinon commentez cette ligne)
         findViewById(R.id.button3).setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, IpCalculatorActivity.class));
+            try {
+                startActivity(new Intent(MainActivity.this, Class.forName("com.example.netools.IpCalculatorActivity")));
+            } catch (ClassNotFoundException e) {
+                // Si l'activité n'existe pas encore
+            }
         });
 
-        // Bouton SSH - Telnet (button4)
+        // Bouton SSH - Telnet
         findViewById(R.id.button4).setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SshTelnetActivity.class));
+        });
+
+        // Bouton Paramètres (l'engrenage)
+        ImageButton btnSettings = findViewById(R.id.btnSettings);
+        btnSettings.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         });
     }
 }

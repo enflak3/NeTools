@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">NeTools</string>
+    <string name="speed_test">SpeedTest</string>
+    <string name="ip_calculator">Calculateur IP</string>
+    <string name="ssh_telnet">SSH - Telnet</string>
+    <string name="settings">Paramètres</string>
+    
+    <string name="host_hint">Adresse IP ou Host (ex: telehack.com)</string>
+    <string name="port_hint">Port</string>
+    <string name="user_hint">Username (SSH uniquement)</string>
+    <string name="pass_hint">Password (SSH uniquement)</string>
+    <string name="command_hint">Entrez une commande...</string>
+    <string name="send">Envoyer</string>
+    <string name="connect">Connecter</string>
+    <string name="disconnect">Déconnecter</string>
+    <string name="connected_to">Connecté à %s\n</string>
+    <string name="conn_failed">Échec de connexion : %s</string>
+    
+    <string name="dark_mode">Mode Sombre</string>
+    <string name="language">Langue</string>
+    <string name="lang_fr">Français</string>
+    <string name="lang_en">Anglais</string>
 </resources>
