@@ -23,10 +23,19 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button btnSpeedTest = findViewById(R.id.button);
-        btnSpeedTest.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SpeedTest.class);
-            startActivity(intent);
+        // Bouton SpeedTest (button)
+        findViewById(R.id.button).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SpeedTest.class));
+        });
+
+        // Bouton Calculateur IP (button3)
+        findViewById(R.id.button3).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, IpCalculatorActivity.class));
+        });
+
+        // Bouton SSH - Telnet (button4)
+        findViewById(R.id.button4).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SshTelnetActivity.class));
         });
     }
 }

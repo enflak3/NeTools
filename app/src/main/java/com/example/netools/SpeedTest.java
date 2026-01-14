@@ -1,7 +1,7 @@
 package com.example.netools;
 
-import android.content.res.ColorStateList; // Ajouté
-import android.graphics.Color; // Ajouté
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -22,7 +22,6 @@ public class SpeedTest extends AppCompatActivity {
     private Button btnStart;
     private ProgressBar progressBarSurfing, progressBarStreaming, progressBarGaming;
 
-    // Seuils de vitesse en Mbps
     private static final double SURFING_MAX = 10.0;
     private static final double STREAMING_MAX = 25.0;
     private static final double GAMING_MAX = 50.0;
@@ -41,7 +40,6 @@ public class SpeedTest extends AppCompatActivity {
         progressBarStreaming = findViewById(R.id.progressBarStreaming);
         progressBarGaming = findViewById(R.id.progressBarGaming);
 
-        // Initialisation des progress bars à 100 max
         progressBarSurfing.setMax(100);
         progressBarStreaming.setMax(100);
         progressBarGaming.setMax(100);
@@ -49,20 +47,25 @@ public class SpeedTest extends AppCompatActivity {
         btnStart.setOnClickListener(v -> {
             btnStart.setEnabled(false);
             tvSpeed.setText("En cours...");
-
-            // Réinitialisation avec la méthode couleur (remet à 0 et probablement rouge)
-            updateProgressWithColor(progressBarSurfing, 0);
-            updateProgressWithColor(progressBarStreaming, 0);
-            updateProgressWithColor(progressBarGaming, 0);
-
             new Thread(this::runTest).start();
         });
+    }
+
+    private void updateProgressBarColor(ProgressBar progressBar, int progress) {
+        int color;
+        if (progress < 33) {
+            color = Color.RED;
+        } else if (progress < 66) {
+            color = Color.parseColor("#FFA500"); // Orange
+        } else {
+            color = Color.parseColor("#4CAF50");
+        }
+        runOnUiThread(() -> progressBar.setProgressTintList(ColorStateList.valueOf(color)));
     }
 
     private void runTest() {
         OkHttpClient client = new OkHttpClient();
 
-        // 1. Mesure de la latence (Ping simplifié)
         long pingStart = System.currentTimeMillis();
         Request pingRequest = new Request.Builder().url(URL).head().build();
         try (Response ignored = client.newCall(pingRequest).execute()) {
@@ -70,7 +73,6 @@ public class SpeedTest extends AppCompatActivity {
             runOnUiThread(() -> tvPing.setText(String.format(Locale.getDefault(), "%d ms", ping)));
         } catch (IOException ignored) {}
 
-        // 2. Test de débit
         Request request = new Request.Builder().url(URL).build();
         try (Response response = client.newCall(request).execute()) {
             ResponseBody body = response.body();
@@ -88,30 +90,30 @@ public class SpeedTest extends AppCompatActivity {
                 total += read;
                 long elapsed = System.currentTimeMillis() - start;
 
-                if (elapsed > 500) { // On commence à calculer après 500ms
+                if (elapsed > 500) {
                     double currentSpeed = (total * 8.0 / 1000000.0) / (elapsed / 1000.0);
-
                     if (currentSpeed < min) min = currentSpeed;
                     if (currentSpeed > max) max = currentSpeed;
 
                     final double fSpeed = currentSpeed;
                     final double fMin = min;
                     final double fMax = max;
+                    
+                    int pSurfing = (int) Math.min(100, (fSpeed / SURFING_MAX) * 100);
+                    int pStreaming = (int) Math.min(100, (fSpeed / STREAMING_MAX) * 100);
+                    int pGaming = (int) Math.min(100, (fSpeed / GAMING_MAX) * 100);
 
-                    // Calcul des pourcentages pour les barres
-                    int progressSurfing = (int) Math.min(100, (fSpeed / SURFING_MAX) * 100);
-                    int progressStreaming = (int) Math.min(100, (fSpeed / STREAMING_MAX) * 100);
-                    int progressGaming = (int) Math.min(100, (fSpeed / GAMING_MAX) * 100);
+                    updateProgressBarColor(progressBarSurfing, pSurfing);
+                    updateProgressBarColor(progressBarStreaming, pStreaming);
+                    updateProgressBarColor(progressBarGaming, pGaming);
 
                     runOnUiThread(() -> {
                         tvSpeed.setText(String.format(Locale.getDefault(), "%.1f Mbps", fSpeed));
                         tvMin.setText(String.format(Locale.getDefault(), "%.1f Mbps", fMin));
                         tvMax.setText(String.format(Locale.getDefault(), "%.1f Mbps", fMax));
-
-                        // Utilisation de la nouvelle méthode pour mettre à jour AVEC couleur
-                        updateProgressWithColor(progressBarSurfing, progressSurfing);
-                        updateProgressWithColor(progressBarStreaming, progressStreaming);
-                        updateProgressWithColor(progressBarGaming, progressGaming);
+                        progressBarSurfing.setProgress(pSurfing);
+                        progressBarStreaming.setProgress(pStreaming);
+                        progressBarGaming.setProgress(pGaming);
                     });
                 }
             }
@@ -120,32 +122,5 @@ public class SpeedTest extends AppCompatActivity {
         } finally {
             runOnUiThread(() -> btnStart.setEnabled(true));
         }
-    }
-
-    /**
-     * Met à jour la ProgressBar et change sa couleur selon le niveau de remplissage.
-     * < 1/3 : Rouge
-     * 1/3 à 2/3 : Orange
-     * > 2/3 : Vert
-     */
-    private void updateProgressWithColor(ProgressBar progressBar, int progress) {
-        progressBar.setProgress(progress);
-
-        int max = progressBar.getMax();
-        double ratio = (double) progress / max;
-        int color;
-
-        if (ratio < (1.0 / 3.0)) {
-            // Moins de 1/3 -> Rouge
-            color = Color.RED;
-        } else if (ratio < (2.0 / 3.0)) {
-            // Entre 1/3 et 2/3 -> Orange
-            color = Color.parseColor("#FFA500");
-        } else {
-            // Plus de 2/3 -> Vert
-            color = Color.parseColor("#4CAF50"); // Ou Color.parseColor("#4CAF50") pour un vert plus doux
-        }
-
-        progressBar.setProgressTintList(ColorStateList.valueOf(color));
     }
 }
