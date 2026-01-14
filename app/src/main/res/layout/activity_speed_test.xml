@@ -55,11 +55,12 @@
         android:id="@+id/tvPing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" -- ms"
         android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="@id/tvPingLabel"
+        android:text=" -- ms"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvPingLabel"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/tvPingLabel" />
 
     <LinearLayout
         android:id="@+id/statsLayout"
@@ -113,5 +114,101 @@
         android:text="Démarrer le test"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statsLayout"
+        app:srcCompat="@drawable/webpage" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statsLayout"
+        app:srcCompat="@drawable/clapperboard" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/games" />
+
+    <ProgressBar
+        android:id="@+id/progressBarSurfing"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ProgressBar
+        android:id="@+id/progressBarStreaming"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ProgressBar
+        android:id="@+id/progressBarGaming"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Surfing"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Streaming"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gaming"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
