@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    android:backgroundTint="#2E29ADFF"
+    android:backgroundTintMode="add"
     android:padding="16dp"
     tools:context=".TraceRouteActivity">
 
@@ -21,6 +24,7 @@
         android:id="@+id/btnTrace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#2962FF"
         android:text="@string/start_trace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,8 +48,8 @@
             android:fontFamily="monospace"
             android:padding="8dp"
             android:textColor="#00FF00"
-            android:textSize="12sp"
-            android:textIsSelectable="true" />
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
