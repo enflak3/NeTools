@@ -3,6 +3,7 @@
     <string name="speed_test">SpeedTest</string>
     <string name="ip_calculator">Calculateur IP</string>
     <string name="ssh_telnet">SSH - Telnet</string>
+    <string name="trace_route">Trace Route</string>
     <string name="settings">Paramètres</string>
     
     <!-- SSH / Telnet -->
@@ -46,4 +47,9 @@
     <string name="loading">Chargement...</string>
     <string name="error_network">Erreur réseau</string>
     <string name="error">Erreur</string>
+
+    <!-- Trace Route -->
+    <string name="trace_route_hint">IP ou Domaine (ex: google.com)</string>
+    <string name="start_trace">Lancer le Trace</string>
+    <string name="tracing">Traçage en cours vers %s...</string>
 </resources>

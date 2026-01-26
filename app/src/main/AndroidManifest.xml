@@ -24,6 +24,10 @@
             android:exported="false"
             android:label="SSH - Telnet" />
         <activity
+            android:name=".TraceRouteActivity"
+            android:exported="false"
+            android:label="Trace Route" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/settings" />

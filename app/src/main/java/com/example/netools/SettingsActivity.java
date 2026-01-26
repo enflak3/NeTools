@@ -1,7 +1,6 @@
 package com.example.netools;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
-import com.google.android.material.materialswitch.MaterialSwitch;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -25,17 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        MaterialSwitch switchDarkMode = findViewById(R.id.switchDarkMode);
         Spinner spinnerLanguage = findViewById(R.id.spinnerLanguage);
-
-        // Dark Mode
-        switchDarkMode.setChecked(prefs.getBoolean("dark_mode", false));
-        switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean("dark_mode", isChecked).apply();
-            AppCompatDelegate.setDefaultNightMode(isChecked ? 
-                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-        });
 
         // Language Spinner
         String[] languages = {getString(R.string.lang_fr), getString(R.string.lang_en)};
