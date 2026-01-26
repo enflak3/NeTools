@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class SshTelnetActivity extends AppCompatActivity {
 
     private EditText etHost, etPort, etUser, etPassword, etCommand;
     private TextView tvTerminal;
+    private ScrollView svTerminal;
     private Button btnConnect, btnSend;
     private RadioButton rbSsh;
 
@@ -36,6 +38,7 @@ public class SshTelnetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LanguageManager.loadLocale(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ssh_telnet);
 
@@ -45,6 +48,7 @@ public class SshTelnetActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etCommand = findViewById(R.id.etCommand);
         tvTerminal = findViewById(R.id.tvTerminal);
+        svTerminal = findViewById(R.id.svTerminal);
         btnConnect = findViewById(R.id.btnConnect);
         btnSend = findViewById(R.id.btnSend);
         rbSsh = findViewById(R.id.rbSsh);
@@ -165,6 +169,8 @@ public class SshTelnetActivity extends AppCompatActivity {
 
     private void appendToTerminal(String text) {
         tvTerminal.append(text);
+        // Défilement automatique vers le bas
+        svTerminal.post(() -> svTerminal.fullScroll(ScrollView.FOCUS_DOWN));
     }
 
     @Override
