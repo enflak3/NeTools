@@ -32,6 +32,10 @@
             android:exported="false"
             android:label="@string/settings" />
         <activity
+            android:name=".AboutUsActivity"
+            android:exported="false"
+            android:label="@string/about_us" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -23,6 +23,8 @@
     <string name="language">Langue</string>
     <string name="lang_fr">Français</string>
     <string name="lang_en">Anglais</string>
+    <string name="about_us">À propos de nous</string>
+    <string name="about_us_description">Bienvenue sur NeTools ! Nous sommes une équipe composée de trois étudiants développant des outils réseau simples et efficaces pour tous. Notre mission est de rendre la gestion réseau plus intuitive.</string>
 
     <!-- IP Calculator -->
     <string name="ip_hint">Adresse IP</string>

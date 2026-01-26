@@ -1,6 +1,7 @@
 package com.example.netools;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -62,6 +63,17 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        // Bouton À propos de nous
+        findViewById(R.id.btnAboutUs).setOnClickListener(v -> {
+            startActivity(new Intent(SettingsActivity.this, AboutUsActivity.class));
+        });
+
+        // Easter Egg (Rickroll)
+        findViewById(R.id.btnEasterEgg).setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/dQw4w9WgXcQ?si=UE5DLZeGWSQpd2Cq"));
+            startActivity(intent);
         });
     }
 }
