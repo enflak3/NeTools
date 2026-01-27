@@ -45,9 +45,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="222dp"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
             android:id="@+id/button"
             android:layout_width="220dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="#2962FF"
             android:text="@string/speed_test" />
 
@@ -64,6 +66,7 @@
             android:id="@+id/button3"
             android:layout_width="220dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="#2962FF"
             android:text="@string/ip_calculator" />
 
@@ -71,6 +74,7 @@
             android:id="@+id/btnTraceRoute"
             android:layout_width="220dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="#2962FF"
             android:text="@string/trace_route" />
 

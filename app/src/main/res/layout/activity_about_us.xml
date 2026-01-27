@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    android:backgroundTint="#2E29ADFF"
+    android:backgroundTintMode="add"
     android:padding="16dp">
 
     <LinearLayout
@@ -14,66 +17,69 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@string/about_us"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:text="@string/about_us_description"
             android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_marginBottom="32dp" />
+            android:textSize="16sp" />
 
         <!-- Membre 1 - Lucas -->
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/member1"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="8dp"
-            app:shapeAppearanceOverlay="@style/CircleImage"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/member1"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="@astrotooner / Thomas"
-            android:textStyle="italic"
             android:textSize="14sp"
-            android:layout_marginBottom="24dp"/>
+            android:textStyle="italic" />
 
         <!-- Membre 2 -->
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/member2"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="8dp"
-            app:shapeAppearanceOverlay="@style/CircleImage"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/member2"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="@arkynu / Lucas"
-            android:textStyle="italic"
             android:textSize="14sp"
-            android:layout_marginBottom="24dp"/>
+            android:textStyle="italic" />
 
         <!-- Membre 3 -->
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/member3"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="8dp"
-            app:shapeAppearanceOverlay="@style/CircleImage"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/member3"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="@enflake / Mathieu"
-            android:textStyle="italic"
             android:textSize="14sp"
-            android:layout_marginBottom="24dp"/>
+            android:textStyle="italic" />
 
     </LinearLayout>
 </ScrollView>

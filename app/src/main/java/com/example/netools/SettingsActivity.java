@@ -18,7 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Appliquer la langue avant tout
         LanguageManager.loadLocale(this);
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -27,9 +27,9 @@ public class SettingsActivity extends AppCompatActivity {
         // Language Spinner
         String[] languages = {getString(R.string.lang_fr), getString(R.string.lang_en)};
         String[] codes = {"fr", "en"};
-        
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 
-            android.R.layout.simple_spinner_item, languages);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, languages);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
                 String selectedCode = codes[position];
                 if (!selectedCode.equals(LanguageManager.getLangCode(SettingsActivity.this))) {
                     LanguageManager.setLocale(SettingsActivity.this, selectedCode);
-                    
+
                     // Redémarrer l'application pour appliquer partout proprement
                     Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
