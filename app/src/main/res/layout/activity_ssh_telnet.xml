@@ -85,8 +85,8 @@
 
     <ScrollView
         android:id="@+id/svTerminal"
-        android:layout_width="366dp"
-        android:layout_height="624dp"
+        android:layout_width="364dp"
+        android:layout_height="443dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/etCommand"
         app:layout_constraintEnd_toEndOf="parent"

@@ -22,6 +22,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!-- Membre 1 - Lucas -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +31,6 @@
             android:textAlignment="center"
             android:textSize="16sp" />
 
-        <!-- Membre 1 - Lucas -->
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
