@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="@astrotooner / Thomas"
+            android:text="\@astrotooner / Thomas"
             android:textSize="14sp"
             android:textStyle="italic" />
 
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="@arkynu / Lucas"
+            android:text="\@arkynu / Lucas"
             android:textSize="14sp"
             android:textStyle="italic" />
 
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="@enflake / Mathieu"
+            android:text="\@enflake / Mathieu"
             android:textSize="14sp"
             android:textStyle="italic" />
 

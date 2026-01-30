@@ -29,8 +29,9 @@
             android:id="@+id/spinnerLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/language"
             android:inputType="none"
-            tools:ignore="LabelFor" />
+            tools:ignore="EditableTextViewUseHint" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
