@@ -21,8 +21,8 @@
     <!-- Settings -->
     <string name="dark_mode">Dark Mode</string>
     <string name="language">Language</string>
-    <string name="lang_fr">French</string>
-    <string name="lang_en">English</string>
+    <string name="lang_fr">Français (France)</string>
+    <string name="lang_en">English (United States)</string>
     <string name="about_us">About Us</string>
     <string name="about_us_description">Welcome to NeTools! We are a trio of students developing simple and efficient network tools for everyone. Our mission is to make network management more intuitive.</string>
 
