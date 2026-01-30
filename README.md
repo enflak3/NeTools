@@ -17,7 +17,7 @@ La réalisation de ce projet s'est voulue proche d'une situation professionnelle
 
 ---
 
-## 👥 Équipe de projet (SAE 3.01)
+## 👥 Équipe de projet (SAE3.02 - Développer des applications communicantes)
 Projet réalisé à l'**IUT Nancy-Brabois** (Département Réseaux & Télécommunications).
 
 * **Développeurs** : Mathieu (enflake), Thomas (Astrotooner), Lucas (Arkynu).
